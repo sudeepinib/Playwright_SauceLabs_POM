@@ -1,0 +1,13 @@
+{
+    "Users":[{
+        "username":"standard_user",
+        "password": "secret_sauce",
+        "asserttext":"Products"
+    },
+    {
+        "username":"standard_user",
+        "password":"secret_saucessdummy",
+        "asserttext":"Epic sadface: Username and password do not match any user in this service"
+    }
+]
+}

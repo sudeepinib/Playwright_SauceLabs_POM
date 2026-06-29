@@ -15,16 +15,16 @@ test.describe('Products page', ()=>{
         const product=new InventoryPage(page)
         let cartcount= await product.getCartCount()
         await product.addProduct('sauce-labs-backpack')
-        console.log("countis ",product.getCartCount())
         expect( await product.getCartCount()).toBeGreaterThan(cartcount)
-        
-        //const cartCount = await product.getCartCount();
+    })
 
-        //await product.addProduct('sauce-labs-backpack');
-
-        //const updatedCartCount = await product.getCartCount();
-
-        //expect(updatedCartCount).toBeGreaterThan(cartcount);
+   test('Remove Product',async({page})=>{
+        const product=new InventoryPage(page)
+        await product.addProduct('sauce-labs-backpack')
+            
+        await product.removeProduct('sauce-labs-backpack')
+    
+        await expect(page.locator('[data-test="add-to-cart-sauce-labs-backpack"]')).toBeVisible()
     })
 
 })

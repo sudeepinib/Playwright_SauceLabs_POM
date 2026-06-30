@@ -1,6 +1,7 @@
 import {test,expect} from '@playwright/test'
 import { InventoryPage } from '../pages/InventoryPage'
 import { LoginPage } from '../pages/LoginPage'  
+import { CartPage } from '../pages/CartPage'
 
 test.describe('Products page', ()=>{
 
@@ -13,9 +14,11 @@ test.describe('Products page', ()=>{
     test('Add product',async({page})=>{
         //await page.pause()
         const product=new InventoryPage(page)
+        const verify=new CartPage(page)
         let cartcount= await product.getCartCount()
         await product.addProduct('sauce-labs-backpack')
         expect( await product.getCartCount()).toBeGreaterThan(cartcount)
+        await verify.VerifyProduct('sauce Labs Backpack')
     })
 
    test('Remove Product',async({page})=>{
